@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class FindMode {
-
+//	https://school.programmers.co.kr/learn/courses/30/lessons/120812
 	public static void main(String[] args) {
 		int[] array = {1, 1, 2, 2};
 //		int[] array = {1, 2, 3, 3, 3, 4};
