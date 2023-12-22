@@ -6,7 +6,7 @@ public class SharingPizza3 {
 		int slice = 7;
 		int n = 10;
   
-	    System.out.println(n/slice + (n%slice!=0 ? 1 : 0));
+	    System.out.println(n / slice + (n%slice!=0 ? 1 : 0));
 	}
 
 }
