@@ -11,7 +11,7 @@ public class AddSelectedTwoNumber {
 		int[] numbers = {2, 1, 3, 4, 1};
 		int[] answer = {};
 		Set<Integer> set = new HashSet<>();
-//		Set<Integer> set = new TreeSet<>(); 자동 정렬됨.
+//		Set<Integer> set = new TreeSet<>(); //자동 정렬됨.
 		int index = 0;
 		
 		for(int i=0; i<numbers.length-1; i++) {
@@ -23,15 +23,12 @@ public class AddSelectedTwoNumber {
 		answer = new int[set.size()];
 		
 		for(int s : set) {
-			answer[index] = s;
-			index++;
+			answer[index++] = s;
 		}
 		
 		Arrays.sort(answer);
 
-		for(int a : answer) {
-			System.out.println(a);
-		}
+		System.out.println(Arrays.toString(answer));
 	}
 
 }
