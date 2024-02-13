@@ -6,14 +6,14 @@ public class Cola {
 		int a = 3;
 		int b =1;
 		int n = 20;
-	    int answer = 0;
-	    int m = 0;
-	    
-	    while(n>=a) {
-	    	m = n/a*b;
-	    	answer += m;
-	    	n = n%a + m;
-	    }
+		int answer = 0;
+        int freeCola = 0;
+        
+        while(n>=a) {
+        	freeCola = n/a * b;
+        	answer += freeCola;
+        	n = n%a + freeCola;
+        }
 	    
 	    System.out.println(answer);
 	}
