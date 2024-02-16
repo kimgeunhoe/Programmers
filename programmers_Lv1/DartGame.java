@@ -4,49 +4,46 @@ public class DartGame {
 
 	public static void main(String[] args) {
 		String dartResult = "1D2S#10S";
-		String[] str = {};
-		int[] score = new int[3];
-		int point = 0;
-		int index = 0;
-		int pow =0;
 		int answer = 0;
-		
-		str = dartResult.split("");
-		
-		for(int i=0; i<str.length; i=i+2) {
-			if(str[i+1].equals("0")) {
-				point = 10;
-				i++;
-			} else {
-				point = Integer.parseInt(str[i]);
-			}
-			
-			pow = str[i+1].equals("S") ? 1 : str[i+1].equals("D") ? 2 : 3;
-			score[index] = (int)(Math.pow(point, pow));
-			
-			if(i+2<str.length) {
-				if(str[i+2].equals("*")) {
-					score[index] *= 2;
-					
-					if(index!=0) {
-						score[index-1] *= 2;
-					}
-					
-					i++;
-				} else if(str[i+2].equals("#")) {
-					score[index] *= -1;
-					i++;
-				}
-			}
+	    int score = 0;
+	    int[] arr = new int[3];
+	    int index = 0;
+	    
+	    for(int i=0; i<dartResult.length()-1; i+=2) {
+	    	if(dartResult.charAt(i+1)=='0') {
+	    		score = 10;
+	    		i++;
+	    	} else {
+	    		score = Character.getNumericValue(dartResult.charAt(i));
+	    	}
 
-			index++;
-		}
-		
-		for(int s : score) {
-			answer += s;
-		}
-		
-		System.out.println(answer);
+	    	if(dartResult.charAt(i+1)!='S') {
+	    		score = (int)Math.pow(score, dartResult.charAt(i+1)=='D' ? 2 : 3);
+	    	}
+	    	
+	    	if(i+2<dartResult.length() && !(dartResult.charAt(i+2)>='0' && dartResult.charAt(i+2)<='9')) {
+	    		if(dartResult.charAt(i+2)=='*') {
+	    			if(index!=0) {
+	    				arr[index-1] *= 2; 
+	    			}
+	    	
+	    			score *= 2;
+	    		} else {
+	    			score *= -1;
+	    		}
+	    		
+	    		i++;
+	    	}
+	    	
+	    	arr[index] = score;
+	    	index++;
+	    }
+	    
+	    for(int a : arr) {
+	    	answer += a;
+	    }
+
+	    System.out.println(answer);
 	}
 
 }
