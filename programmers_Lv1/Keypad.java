@@ -5,56 +5,41 @@ public class Keypad {
 	public static void main(String[] args) {
 		int[] numbers = {7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2};
 		String hand = "left";
-		String answer = "";
-
-		int left = 10;
+		StringBuilder sb = new StringBuilder();
 		int right = 12;
+		int left = 10;
 		int ldiff = 0;
 		int rdiff = 0;
-
-		for(int num : numbers) {
-        	switch (num) {
-			case 1:
-			case 4:
-			case 7:
-				answer += "L";
-				left = num;
-				break;
-			case 3:
-			case 6:
-			case 9:
-				answer += "R";
-				right = num;
-				break;
-			case 2:
-			case 5:
-			case 8:
-			case 0:
-				if(num==0) {
-					num = 11;
-				}
-				ldiff = Math.abs(num-left)/3 + Math.abs(num-left)%3;
-				rdiff = Math.abs(num-right)/3 + Math.abs(num-right)%3;
-				if(ldiff<rdiff) {
-					answer += "L";
-					left = num;
-				} else if(ldiff>rdiff) {
-					answer += "R";
-					right = num;
-				} else {
-					if(hand.equals("left")) {
-						answer += "L";
-						left = num;
-					} else {
-						answer += "R";
-						right = num;
-					}
-				}
-			default:
-				break;
+		int num = 0;
+		
+		for(int n : numbers) {
+			if(n==0) {
+				n = 11;
 			}
-        }
-        System.out.println(answer);
+			
+			if(n%3==2) {
+				ldiff = Math.abs((n - 1)%3 - (left - 1)%3) + Math.abs((n - 1)/3 - (left - 1)/3);
+				rdiff = Math.abs((n - 1)%3 - (right - 1)%3) + Math.abs((n - 1)/3 - (right - 1)/3);
+				
+				if(ldiff==rdiff) {
+					num = "right".equals(hand) ? 1 : -1;
+				} else {
+					num = rdiff<ldiff ? 1 : -1;
+				}
+			} else {
+				num = n%3==0 ? 1 : -1;
+			}
+			
+			if(num==1) {
+				sb.append("R");
+				right = n;
+			} else {
+				sb.append("L");
+				left = n;
+			}
+		}
+        
+        System.out.println(sb.toString());
 	}
 
 }
