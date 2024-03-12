@@ -8,27 +8,25 @@ public class PersonalityTypeTest {
 	public static void main(String[] args) {
 		String[] survey = {"AN", "CF", "MJ", "RT", "NA"};
 		int[] choices = {5, 3, 2, 7, 5};
-		Map<String, Integer> map = new HashMap<>();
-		String[] str = {"R", "T", "C", "F", "J", "M", "A", "N"};
-		String answer = "";
-		
-		for(String s : str) {
-			map.put(s, 0);
-		}
-		
-		for(int i=0; i<survey.length; i++) {
-			if(choices[i]>4) {
-				map.put(survey[i].split("")[1], map.get(survey[i].split("")[1]) + choices[i] - 4);
-			} else if(choices[i]<4) {
-				map.put(survey[i].split("")[0], map.get(survey[i].split("")[0]) + 4-choices[i]);
-			}
-		}
-		
-		for(int i=0; i<str.length; i=i+2) {
-			answer += map.get(str[i])>=map.get(str[i+1]) ? str[i] : str[i+1];
-		}
-		
-		System.out.println(answer);
+		StringBuilder answer = new StringBuilder("");
+        char[] type = {'R', 'T', 'C', 'F', 'J', 'M', 'A', 'N'};
+        Map<Character, Integer> score = new HashMap<>();
+        char c = ' ';
+        int num = 0;
+
+        for(int i=0; i<survey.length; i++) {
+            if(choices[i]!=4) {
+                c = choices[i]<4 ? survey[i].charAt(0) : survey[i].charAt(1);
+                score.put(c, score.getOrDefault(c, 0) + Math.abs(4 - choices[i]));
+            }
+        }
+        
+        for(int i=0; i<type.length; i+=2) {
+            num = score.getOrDefault(type[i], 0)>=score.getOrDefault(type[i+1], 0) ? 0 : 1;
+            answer.append(type[i + num]);
+        }
+        
+		System.out.println(answer.toString());
 	}
 
 }
