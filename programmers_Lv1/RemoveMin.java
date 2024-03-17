@@ -1,17 +1,23 @@
 package programmers_Lv1;
 
+import java.util.Arrays;
+
 public class RemoveMin {
 
 	public static void main(String[] args) {
 		int[] arr = {10};
 //		int[] arr = {4, 3, 2, 1};
-	    int[] answer = new int[arr.length!=1 ? arr.length-1 : 1];
-	    int min = 999999;
-	    int index = 0;
+		int[] answer = {};
+	    int length = arr.length;
 	    
-	    if(arr.length!=1) {
-	    	for(int a : arr) {
-	    		min = min>a ? a : min;
+	    if(length>1) {
+	    	int min = arr[0];
+	    	int index = 0;
+	    	
+	    	answer = new int[length-1];
+	    	
+	    	for(int i=1; i<length; i++) {
+	    		min = Math.min(min, arr[i]);
 	    	}
 	    	
 	    	for(int a : arr) {
@@ -20,12 +26,10 @@ public class RemoveMin {
 	    		}
 	    	}
 	    } else {
-	    	answer[0] = -1;
+	    	answer = new int[] {-1};
 	    }
 	    
-	    for(int a : answer) {
-	    	System.out.println(a);
-	    }
+	    System.out.println(Arrays.toString(answer));
 	}
 
 }
