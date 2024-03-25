@@ -1,5 +1,7 @@
 package programmers_Lv1;
 
+import java.util.Arrays;
+
 public class SecretMap {
 
 	public static void main(String[] args) {
@@ -7,24 +9,22 @@ public class SecretMap {
 		int[] arr1 = {9, 20, 28, 18, 11};
 		int[] arr2 = {30, 1, 21, 17, 28};
 		String[] answer = new String[n];
-		String str = "";
+        StringBuilder sb = new StringBuilder();
+        
+        for(int i=0; i<n; i++) {
+        	answer[i] = Integer.toBinaryString(arr1[i]|arr2[i]).replace("0", " ").replace("1", "#");
+        	
+        	if(answer[i].length()<n) {
+        		for(int j=answer[i].length(); j<n; j++) {
+        			sb.append(" ");
+        		}
+        		
+        		answer[i] = sb.append(answer[i]).toString();
+        		sb.setLength(0);
+        	}
+        }
 		
-		for(int i=0; i<n; i++) {
-			answer[i] = "";
-			str = Integer.toBinaryString(arr1[i] | arr2[i]);
-			
-			while(str.length()<n) {
-				str = "0" + str;
-			}
-			
-			for(int j=0; j<n; j++) {
-				answer[i] += str.charAt(j)=='0' ? " " : "#";
-			}
-		}
-		
-		for(String a : answer) {
-			System.out.println(a);
-		}
+        System.out.println(Arrays.toString(answer));
 	}
 
 }
