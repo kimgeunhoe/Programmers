@@ -1,7 +1,7 @@
 package programmers_Lv2;
 
 public class NextBigNumber {
-
+//	https://school.programmers.co.kr/learn/courses/30/lessons/12911
 	public static void main(String[] args) {
 		int n = 78;
 //		int n = 8;
@@ -40,17 +40,10 @@ public class NextBigNumber {
 //	    System.out.println(Integer.parseInt(sb.toString(), 2));
 	    
 		int count = Integer.bitCount(n);
-	    int compare = n+1;
+		
+		for(n=n+1; count!=Integer.bitCount(n); n++);
 
-	    while(true) {
-	      if(Integer.bitCount(compare)==count) {
-	    	  break;
-	      }
-
-	      compare++;
-	    }
-
-	    System.out.println(compare);
+	    System.out.println(n);
 	    
 //	    int postPattern = n & -n;
 //	    int smallPattern = ((n ^ (n + postPattern)) / postPattern) >> 2;
