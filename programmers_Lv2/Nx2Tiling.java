@@ -4,8 +4,8 @@ public class Nx2Tiling {
 
 	public static void main(String[] args) {
 		int n = 5;
-	    int answer = 3;
-	    int num = 2;
+	    int answer = 5;
+	    int num = 3;
 	    int pre = 0;
 	    
 	    if(n<=3) {
