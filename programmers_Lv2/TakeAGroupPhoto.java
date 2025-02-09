@@ -40,16 +40,19 @@ public class TakeAGroupPhoto {
 						if(terms!=current) {
 							bool = false;
 						}
+						
 						break;
 					case '>':
 						if(!(terms<current)) {
 							bool = false;
 						}
+						
 						break;
 					case '<':
 						if(!(terms>current)) {
 							bool = false;
 						}
+						
 						break;
 					default:
 						break;
@@ -67,7 +70,7 @@ public class TakeAGroupPhoto {
             }
         }
 
-        for (int i = depth; i<8; i++) {
+        for(int i = depth; i<8; i++) {
             swap(ch, i, depth);
             perm(ch, depth + 1, con);
             swap(ch, i, depth);
